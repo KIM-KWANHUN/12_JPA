@@ -8,9 +8,9 @@ import java.util.List;
 
 public class ProblemEXTests {
 
-    /* title. 테스트 코드 기반으로 JPA 를 사용하지 않을 때 문제 EX */
+    /* title 테스트 코드 기반으로 JPA 를 사용하지 않을 때 문제 EX */
 
-    /* comment.
+    /* comment
      *   테스트 전용 클래스란?
      *   @Test 라는 어노테이션이 1개 이상 가지고 있는 클래스를 의미한다.
      *   테스트 메소드는 반환값이 없으며, 따라서 void 형으로 작성한다.
