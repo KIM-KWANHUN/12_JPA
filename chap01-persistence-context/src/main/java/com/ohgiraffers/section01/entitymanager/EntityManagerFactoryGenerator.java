@@ -11,5 +11,8 @@ public class EntityManagerFactoryGenerator {
     private EntityManagerFactoryGenerator() {}
 
     // static 인스턴스를 리턴해주는 메소드 생성
-    public static EntityManagerFactory getInstance() {return factory;}
+    public static EntityManagerFactory getInstance() {
+
+        return factory;
+    }
 }
