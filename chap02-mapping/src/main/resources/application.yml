@@ -1,0 +1,19 @@
+# 사용할 DBMS 관련 설정정보
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/menudb
+    username: ohgiraffers
+    password: ohgiraffers
+# JPA 관련 설정 정보
+  jpa:
+    show-sql: true # jpa 가 내부적으로 만들어주는 SQL 문 출력
+    database: mysql # 우리가 사용하는 DBMS 종류
+    hibernate:
+      ddl-auto: create
+      # create : 어플리케이션 실행 시 기본 테이블을 삭제 후
+      # 우리가 정의한 Entity 클래스 기반으로 테이블을 생성한다.
+      # none : 데이터베이스 스키마 변경하지 않음. 기존 DB 유지
+      # update : 기존 데이터베이스 스키마를 엔티티에 맞게 업데이트
+      # -> 기존 데이터베이스 데이터를 손실하지 않고 추가 정보 업데이트.
+      # create-drop : 테이블을 생성하지만, 종료 시점에 drop 해준다.
