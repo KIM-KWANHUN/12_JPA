@@ -17,3 +17,7 @@ spring:
       # update : 기존 데이터베이스 스키마를 엔티티에 맞게 업데이트
       # -> 기존 데이터베이스 데이터를 손실하지 않고 추가 정보 업데이트.
       # create-drop : 테이블을 생성하지만, 종료 시점에 drop 해준다.
+    properties:
+      hibernate:
+        format_sql: true
+        # sql 문 들여쓰기 등 알아보기 쉽게 포멧
