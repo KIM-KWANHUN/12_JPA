@@ -1,4 +1,4 @@
-package com.ohgiraffers.associationmapping.section01.manyToOne;
+package com.ohgiraffers.associationmapping.section02.oneToMany;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Entity(name = "menu_and_category")
+@Entity(name = "section02menu")
 @Table(name = "tbl_menu")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -33,9 +33,8 @@ public class Menu {
     *   1번 메뉴를 영속화 할 때, 포함하는 Category 엔티티도
     *   같이 영속화 한다는 의미이다. */
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "category_code")
-    private Category category;
+    @Column(name = "category_code")
+    private int categoryCode;
 
     @Column(name = "orderableStatus")
     private String ordrableStatus;
