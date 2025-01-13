@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>메뉴 전체 조회</title>
+</head>
+<body>
+    <h1>HiMedia 레스토랑</h1>
+    <table border="1px solid">
+        <tr>
+            <th>메뉴번호</th>
+            <th>메뉴이름</th>
+            <th>메뉴가격</th>
+            <th>카테고리</th>
+            <th>판매여부</th>
+        </tr>
+        <tr th:each="menu : ${menulist}">
+            <td>
+                <a th:href="@{/menu/{menuCode}(menuCode=${menu.menuCode})}" th:text="${menu.menuCode}"></a>
+            </td>
+            <td th:text="${menu.menuName}"></td>
+            <td th:text="${menu.menuPrice}"></td>
+            <td th:text="${menu.categoryCode}"></td>
+            <td th:text="${menu.orderableStatus}"></td>
+        </tr>
+    </table>
+</body>
+</html>
