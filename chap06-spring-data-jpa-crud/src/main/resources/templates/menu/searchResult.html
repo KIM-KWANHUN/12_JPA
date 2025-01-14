@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>메뉴가격별 조회</title>
+</head>
+<body>
+    <h3 th:text="|${price} 원을 초과하는 메뉴 목록|" style="color: deepskyblue"></h3>
+    <table border="1px solid">
+        <tr>
+            <th>메뉴코드</th>
+            <th>메뉴이름</th>
+            <th>메뉴가격</th>
+            <th>카테고리</th>
+            <th>판매여부</th>
+        </tr>
+        <tr th:each="menu : ${menuResult}">
+            <td th:text="${menu.menuCode}"></td>
+            <td th:text="${menu.menuName}"></td>
+            <td th:text="${menu.menuPrice}"></td>
+            <td th:text="${menu.categoryCode}"></td>
+            <td th:text="${menu.orderableStatus}"></td>
+        </tr>
+    </table>
+</body>
+</html>

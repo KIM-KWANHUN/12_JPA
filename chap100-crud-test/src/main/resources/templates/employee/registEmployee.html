@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>직원등록</title>
+</head>
+<body>
+<h1 style="color: darkkhaki">💪직원 등록 페이지💪</h1>
+<form action="/employee/regist" method="post">
+    <label>신규 사원 번호 : </label>
+    <input type="number" name="empId"><br>
+    <label>신규 사원 이름 : </label>
+    <input type="text" name="empName"><br>
+    <label>신규 사원 주민등록번호 : </label>
+    <input type="number" name="empNo"><br>
+    <label>신규 사원 이메일 : </label>
+    <input type="text" name="email"><br>
+    <label>신규 사원 휴대폰 : </label>
+    <input type="number" name="phone"><br>
+<!--    <label>신규 사원 부서 : </label>-->
+<!--    <select name="deptCode" id="deptCode"></select><br>-->
+    <label>신규 사원 직급 : </label>
+    <select name="jobCode" id="jobCode"></select><br>
+    <label>입사일 : </label>
+    <input type="date" name="hireDate">
+    <input type="submit" value="신규사원등록">
+</form>
+
+<script>
+        fetch("/employee/job")
+        .then(res => res.json())
+        .then(jobData => {
+            const $jobCode = document.getElementById("jobCode");
+
+            for(let index in jobData) {
+
+                const $option = document.createElement("option");
+
+                $option.value = jobData[index].jobCode;
+                $option.textContent = jobData[index].jobCode;
+
+                $jobCode.appendChild($option);
+            }
+
+        })
+
+        fetch("/employee/dept")
+        .then(resDept => resDept.json())
+        .then(deptData => {
+            const $deptCode = document.getElementById("deptCode")
+
+            for(let index in deptData) {
+                const $option = document.createElement("option")
+
+                $option.value = deptData[index].deptCode;
+                $option.textContent = deptData[index].deptId;
+                $deptCode.appendChild($option);
+            }
+        })
+</script>
+</body>
+</html>

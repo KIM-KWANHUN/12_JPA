@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>전체메뉴 조회</title>
+</head>
+<body>
+    <h1 style="color: yellow">😁메뉴 전체 조회😁</h1>
+
+    <table border="1px solid">
+        <tr>
+            <th>메뉴코드</th>
+            <th>메뉴이름</th>
+            <th>메뉴가격</th>
+            <th>카테고리</th>
+            <th>판매여부</th>
+        </tr>
+        <tr th:each="menu : ${menus}">
+            <td th:text="${menu.menuCode}"></td>
+            <td>
+                <a th:text="${menu.menuName}" th:href="@{/menu/{menuCode}(menuCode=${menu.menuCode})}"></a>
+            </td>
+            <td th:text="${menu.menuPrice}"></td>
+            <td th:text="${menu.categoryCode}"></td>
+            <td th:text="${menu.orderableStatus}"></td>
+        </tr>
+    </table>
+    <div id="paging">
+    <!-- 맨 앞 페이지 이동하는 버튼 -->
+        <button
+          th:onclick="'location.href=\'/menu/list?page=' + ${paging.startPage} + '\''">
+      <<</button>
+    <!-- 이전 페이지 이동하는 버튼 -->
+        <button
+          th:onclick="'location.href=\'/menu/list?page=' + ${paging.currentPage - 1} + '\''"
+          th:disabled="${menus.first}">
+    <!-- 첫번째 페이지 비활성화 -->
+        <</button>
+    <!-- 숫자 페이지 버튼 스타트페이지, 마지막페이지 숫자 만큼의 버튼을 반복해서 생기게 한다. -->
+        <th:block th:each="page : ${#numbers.sequence(paging.startPage, paging.endPage)}">
+            <button th:onclick="'location.href=\'/menu/list?page=' + ${page} + '\''"
+            th:text="${page}"
+            th:disabledd="${paging.currentPage eq page}">
+            </button>
+        </th:block>
+    <!-- 다음 페이지 이동하는 버튼 -->
+        <button
+          th:onclick="'location.href=\'/menu/list?page=' + ${paging.currentPage + 1} + '\''"
+          th:disabled="${menus.last}">
+    <!-- 마지막 페이지 비활성화 -->
+        ></button>
+    <!-- 맨 뒤 페이지 이동하는 버튼 -->
+        <button
+          th:onclick="'location.href=\'/menu/list?page=' + ${paging.endPage} + '\''">
+        >>></button>
+    </div>
+</body>
+</html>

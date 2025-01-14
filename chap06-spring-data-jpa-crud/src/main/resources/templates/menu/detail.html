@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>코드로 메뉴조회</title>
+</head>
+<body>
+    <h1>PathVariable 로 전달 받은 메뉴 상세 조회</h1>
+
+    <table border="1px solid">
+        <tr>
+            <th>메뉴코드</th>
+            <th>메뉴이름</th>
+            <th>메뉴가격</th>
+            <th>카테고리</th>
+            <th>판매여부</th>
+        </tr>
+        <tr>
+            <td th:text="${menu.menuCode}"></td>
+            <td th:text="${menu.menuName}"></td>
+            <td th:text="${menu.menuPrice}"></td>
+            <td th:text="${menu.categoryCode}"></td>
+            <td th:text="${menu.orderableStatus}"></td>
+        </tr>
+    </table>
+    <a th:href="@{/menu/{menuCode}/delete(menuCode=${menu.menuCode})}">삭제</a>
+    <a th:href="@{/menu/modify(menuCode=${menu.menuCode})}">수정</a>
+</body>
+</html>

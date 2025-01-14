@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>새로운 메뉴 등록</title>
+</head>
+<body>
+    <h1 style="color: coral">🥩신규 메뉴 등록🥩</h1>
+
+    <form action="/menu/regist" method="post">
+        <label>메뉴이름 : </label>
+        <input type="text" name="menuName"><br>
+        <label>메뉴가격 : </label>
+        <input type="number" name="menuPrice"><br>
+        <label>카테고리 : </label>
+        <select name="categoryCode" id="categoryCode"></select><br>
+        <label>판매여부 : </label>
+        <select name="orderableStatus" id="orderableStatus">
+            <option value="Y">판매가능</option>
+            <option value="N">판매불가</option>
+        </select><br>
+        <input type="submit" value="메뉴등록">
+    </form>
+
+    <script>
+    <!-- category 의 정보가 담겨있다 하지만 아직은 JS 객체가 아닌 형태만 JS 이다. -->
+        fetch("/menu/category")
+            .then(category => category.json()) // 형태만 js인 것을 js 파일로 변환 하겠다. category 는 변수이다.
+            .then(categoryData => {
+                console.log("categoryData 의값", categoryData);
+                // html 돔 요소 취득 (HTML 에 ID에 있는 값)
+                const $categoryCode = document.getElementById("categoryCode")
+                // categoryData 는 list 타입이기에 반복문
+                for(let index in categoryData) {
+                    // option 태그를 반복문을 이용해 만들기
+                    const $option = document.createElement("option");
+                    // categoryData 의 변수는 하나의 배열에 객체가 하나 들어가있는데 category : 1, categoryName : 한식 이런식으로 들어있다.
+                    // category : 2, categoryName : 양식 이런식으로 반복문을 쓰면 들어있다.
+                    $option.value = categoryData[index].categoryCode;
+                    $option.textContent = categoryData[index].categoryName;
+
+
+                    $categoryCode.appendChild($option);
+                }
+            })
+    </script>
+</body>
+</html>

@@ -1,10 +1,7 @@
 package com.ohgiraffers.springdatajpa.Menu.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,6 +9,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "tbl_menu")
+@Builder(toBuilder = true) // Builder 기능 사용
 public class Menu {
 
     @Id
@@ -31,4 +29,21 @@ public class Menu {
     @Column(name = "orderable_status")
     private String orderableStatus;
 
+//    1. setter 사용 update (권장하지 않는다.)
+//    public void setMenuName(String menuName) {
+//
+//        this.menuName = menuName;
+//    }
+
+//    /* text 1. builder 패턴 직접 구현 */
+//    public Menu menuName(String var) {
+//        this.menuName = var;
+//
+//        return this;
+//    }
+//
+//    public Menu builder() {
+//
+//        return new Menu(menuCode, menuName, menuPrice, categoryCode, orderableStatus);
+//    }
 }

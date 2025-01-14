@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>직원 전체조회</title>
+</head>
+<body>
+    <h1 style="color: brown">🧑직원 전체조회🧑</h1>
+    <table border="1px solid">
+        <tr>
+            <th>사원번호</th>
+            <th>사원이름</th>
+            <th>주민번호</th>
+            <th>이메일</th>
+            <th>휴대폰</th>
+            <th>부서코드</th>
+            <th>직급코드</th>
+            <th>급여등급</th>
+            <th>급여</th>
+            <th>보너스율</th>
+            <th>관리자사번</th>
+            <th>입사일</th>
+            <th>퇴직일</th>
+            <th>퇴직여부</th>
+        </tr>
+        <tr th:each="employee : ${employeeFindAll}">
+            <td th:text="${employee.empId}"></td>
+            <td>
+                <a th:href="@{/employee/findByEmpId/{empId}(empId=${employee.empId})}" th:text="${employee.empName}"></a>
+            </td>
+            <td th:text="${employee.empNo}"></td>
+            <td th:text="${employee.email}"></td>
+            <td th:text="${employee.phone}"></td>
+            <td th:text="${employee.deptCode}"></td>
+            <td th:text="${employee.jobCode}"></td>
+            <td th:text="${employee.salLevel}"></td>
+            <td th:text="${employee.salary}"></td>
+            <td th:text="${employee.bonus}"></td>
+            <td th:text="${employee.managerId}"></td>
+            <td th:text="${employee.hireDate}"></td>
+            <td th:text="${employee.entDate}"></td>
+            <td th:text="${employee.entYn}"></td>
+        </tr>
+    </table>
+
+    <a th:href="@{/employee/regist}">신규 직원 등록</a>
+</body>
+</html>
